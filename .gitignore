@@ -1,0 +1,4 @@
+*.wav
+*.swp
+__pycache__
+models

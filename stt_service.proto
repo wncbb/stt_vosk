@@ -1,0 +1,38 @@
+syntax = "proto2";
+
+package stt;
+
+service SttService {
+  rpc Recognize(RecognizeRequest) returns (RecognizeResponse);
+}
+
+enum ErrorCode{
+  ERR_SUCCESS=0;
+  ERR_ERROR=1;
+}
+
+message Error {
+  optional string msg = 1;
+  optional ErrorCode code = 2;
+}
+
+message RecognizeRequest {
+  optional bytes audio_content = 1;
+}
+
+message RecognizePartial {
+  optional double conf = 1;
+  optional double start = 2;
+  optional double end = 3;
+  optional string word = 4;
+}
+
+message RecognizeResult {
+  repeated RecognizePartial partials = 1;     
+  optional string text = 2;
+}
+
+message RecognizeResponse {
+  optional Error error = 1; 
+  optional RecognizeResult result = 2;
+}
