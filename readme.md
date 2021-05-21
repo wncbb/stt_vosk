@@ -1,4 +1,4 @@
-# A sst server base on vask-api
+# A sst server based on vask-api
 
 
 
